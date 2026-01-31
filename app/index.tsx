@@ -25,7 +25,7 @@ export default function Index() {
       />
       <TextInput
         style={styles.input}
-        onChangeText={setText}
+        onChangeText={setPin}
         value={pin}
         placeholder="Enter restaurant pin"
       />
