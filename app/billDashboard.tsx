@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Alert, Button, StyleSheet, Text, TextInput, View } from "react-native";
-
+import { Alert, Button, StyleSheet, Text, View } from "react-native";
+import FinancialCard from "../components/financialCard";
 export default function Index() {
   const [text, setText] = useState('');
   const [pin, setPin] = useState('');
@@ -16,15 +16,22 @@ export default function Index() {
       }}
     >
       <Text>Table Bill</Text>
-       <TextInput
-        style={styles.input}
-        onChangeText={setText}
-        value={text}
-        placeholder="Total Amount (N)"
+      <FinancialCard
+        total={25000}
+        paid={15000}
+        participants={[
+          { name: "Tunde", paid: true },
+          { name: "Amaka", paid: false },
+        ]}
       />
-      <Text>Enter total bill amount</Text>
       <Button
-        title="Generate Bill"
+        title="Show QR Code"
+        onPress={handlePress}
+        color="black" // Adjusts color (iOS text, Android background)
+        accessibilityLabel="Learn more about this button" // Recommended for accessibility
+      />
+      <Button
+        title="Close Bill"
         onPress={handlePress}
         color="black" // Adjusts color (iOS text, Android background)
         accessibilityLabel="Learn more about this button" // Recommended for accessibility
