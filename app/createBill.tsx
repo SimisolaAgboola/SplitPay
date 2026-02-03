@@ -1,12 +1,11 @@
+import { router } from "expo-router";
 import React, { useState } from 'react';
-import { Alert, Button, StyleSheet, Text, TextInput, View } from "react-native";
+import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 
 export default function Index() {
   const [text, setText] = useState('');
   const [pin, setPin] = useState('');
-  const handlePress = () =>{
-    Alert.alert('Simple button')
-  }
+  
   return (
     <View
       style={{
@@ -25,7 +24,7 @@ export default function Index() {
       <Text>Enter total bill amount</Text>
       <Button
         title="Generate Bill"
-        onPress={handlePress}
+        onPress={() => router.push("/billDashboard")}
         color="black" // Adjusts color (iOS text, Android background)
         accessibilityLabel="Learn more about this button" // Recommended for accessibility
       />

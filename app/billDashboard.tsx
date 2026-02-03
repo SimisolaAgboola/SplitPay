@@ -1,3 +1,4 @@
+import { router } from "expo-router";
 import React, { useState } from 'react';
 import { Alert, Button, StyleSheet, Text, View } from "react-native";
 import FinancialCard from "../components/financialCard";
@@ -26,7 +27,7 @@ export default function Index() {
       />
       <Button
         title="Show QR Code"
-        onPress={handlePress}
+        onPress={() => router.push("/qrCodeScreen")}
         color="black" // Adjusts color (iOS text, Android background)
         accessibilityLabel="Learn more about this button" // Recommended for accessibility
       />

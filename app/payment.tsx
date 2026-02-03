@@ -1,3 +1,4 @@
+import { router } from "expo-router";
 import React, { useState } from 'react';
 import { Alert, Button, StyleSheet, Text, View } from "react-native";
 
@@ -20,7 +21,7 @@ export default function Index() {
       <Text>Payment methods: Card/Transfer/USSD</Text>
       <Button
         title="Pay Now"
-        onPress={handlePress}
+        onPress={() => router.push("/paymentSuccess")}
         color="black" // Adjusts color (iOS text, Android background)
         accessibilityLabel="Learn more about this button" // Recommended for accessibility
       />
@@ -35,3 +36,6 @@ const styles = StyleSheet.create({
     borderWidth: 2,
   },
 });
+
+
+

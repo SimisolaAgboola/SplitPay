@@ -1,3 +1,4 @@
+import { router } from "expo-router";
 import React, { useState } from 'react';
 import { Alert, Button, StyleSheet, Text, TextInput, View } from "react-native";
 
@@ -25,7 +26,7 @@ export default function Index() {
       />
       <Button
         title="Continue"
-        onPress={handlePress}
+        onPress={() => router.push("/splitSummary")}
         color="black" // Adjusts color (iOS text, Android background)
         accessibilityLabel="Learn more about this button" // Recommended for accessibility
       />

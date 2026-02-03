@@ -1,3 +1,4 @@
+import { router } from "expo-router";
 import React, { useState } from 'react';
 import { Alert, Button, Image, StyleSheet, Text, View } from "react-native";
 
@@ -21,7 +22,7 @@ export default function Index() {
       <Text>Scan this QR code to split and pay the bill</Text>
       <Button
         title="Back to Dashboard"
-        onPress={handlePress}
+        onPress={() => router.push("/billDashboard")}
         color="black" // Adjusts color (iOS text, Android background)
         accessibilityLabel="Learn more about this button" // Recommended for accessibility
       />
