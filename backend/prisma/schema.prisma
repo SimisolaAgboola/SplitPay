@@ -1,0 +1,47 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model Restaurant {
+  id        String   @id @default(uuid())
+  name      String
+  createdAt DateTime @default(now())
+
+  bills     Bill[]
+}
+
+model Bill {
+  id           String   @id @default(uuid())
+  totalAmount  Int
+  status       String   @default("open")
+  qrCode       String?
+  createdAt    DateTime @default(now())
+
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
+  restaurantId String
+
+  participants Participant[]
+}
+
+model Participant {
+  id          String   @id @default(uuid())
+  name        String
+  amountOwed  Int
+  hasPaid     Boolean  @default(false)
+
+  bill        Bill     @relation(fields: [billId], references: [id])
+  billId      String
+}
+
