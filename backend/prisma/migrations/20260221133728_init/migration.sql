@@ -23,6 +23,7 @@ CREATE TABLE "Bill" (
 CREATE TABLE "Participant" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
     "amountOwed" INTEGER NOT NULL,
     "hasPaid" BOOLEAN NOT NULL DEFAULT false,
     "billId" TEXT NOT NULL,

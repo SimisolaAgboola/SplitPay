@@ -1,5 +1,6 @@
 import express from "express";
 import QRCode from "qrcode";
+import { validate as isUUID } from "uuid";
 import prisma from "../db/prisma.js";
 
 const router = express.Router();
@@ -20,6 +21,7 @@ router.post("/create-bill", async (req, res) => {
             participants: {
                 create: participants.map((p) => ({
                     name: p.name,
+                    email: p.email,
                     amountOwed: p.amount,
                 })),
             },
@@ -51,10 +53,16 @@ router.post("/create-bill", async (req, res) => {
   }
 });
 
+
 router.get("/bill/:id", async (req, res) => {
     try {
         const { id } = req.params;
-    
+
+        if (!isUUID(id)) {
+            return res.status(400).json({ error: "Invalid bill ID format" });
+        }
+        
+        //GET bill
         const bill = await prisma.bill.findUnique({
             where: { id },
             include: {
