@@ -65,6 +65,7 @@ export default function RootLayout() {
         <Stack.Screen name="bill/scanner" options={{ title: 'Scan Receipt' }} />
         <Stack.Screen name="bill/itemize" options={{ title: 'Claim Items' }} />
         <Stack.Screen name="bill/[id]" options={{ title: 'Bill Summary' }} />
+        <Stack.Screen name="checkout/success" options={{ title: 'Payment Success', headerShown: false }} />
       </Stack>
     </>
   );
