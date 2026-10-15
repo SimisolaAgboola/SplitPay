@@ -59,6 +59,7 @@ export default function RootLayout() {
           contentStyle: { backgroundColor: '#0A0F1D' },
         }}
       >
+        <Stack.Screen name="auth/login" options={{ title: 'Sign In', headerShown: false }} />
         <Stack.Screen name="index" options={{ title: 'Kalo', headerShown: false }} />
         <Stack.Screen name="bill/create" options={{ title: 'Create New Split' }} />
         <Stack.Screen name="bill/scanner" options={{ title: 'Scan Receipt' }} />
