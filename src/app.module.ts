@@ -5,6 +5,7 @@ import { ParticipantsModule } from './modules/participants/participants.module.j
 import { ReceiptsModule } from './modules/receipts/receipts.module.js';
 import { SplitsModule } from './modules/splits/splits.module.js';
 import { PrismaService } from './prisma/prisma.service.js';
+import { PaymentsModule } from './modules/payments/payments.module.js';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { PrismaService } from './prisma/prisma.service.js';
     ReceiptsModule,
     SplitsModule,
     ParticipantsModule,
+    PaymentsModule,
   ],
   controllers: [],
   providers: [PrismaService],
