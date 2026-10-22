@@ -8,9 +8,11 @@ generator client {
 }
 
 model User {
-  id        String   @id @default(uuid())
-  phone     String   @unique
-  createdAt DateTime @default(now())
+  id           String        @id @default(uuid())
+  phone        String        @unique
+  name         String?       // Optional user display name
+  participants Participant[]
+  createdAt    DateTime      @default(now())
 }
 
 model Bill {
@@ -37,6 +39,8 @@ model Participant {
   id      String            @id @default(uuid())
   billId  String
   bill    Bill              @relation(fields: [billId], references: [id], onDelete: Cascade)
+  userId  String?           // <--- Optional link to a registered User account
+  user    User?             @relation(fields: [userId], references: [id], onDelete: SetNull) // <--- Opposite relation
   name    String
   hasPaid Boolean           @default(false)
   items   ParticipantItem[]

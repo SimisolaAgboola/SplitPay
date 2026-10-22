@@ -5,13 +5,8 @@ import { AuthService } from './auth.service.js';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @Post('send-otp')
-  async sendOtp(@Body('phone') phone: string) {
-    return this.authService.sendOtp(phone);
-  }
-
-  @Post('verify-otp')
-  async verifyOtp(@Body('phone') phone: string, @Body('pin') pin: string) {
-    return this.authService.verifyOtp(phone, pin);
+  @Post('phone-auth')
+  async phoneAuth(@Body() body: { phone: string; name?: string }) {
+    return this.authService.authenticateWithPhone(body);
   }
 }
